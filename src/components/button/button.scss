@@ -1,0 +1,14 @@
+// @import '../../assets/sass/style.scss';
+
+.pro-btn {
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  flex-shrink: 0;
+  background-color: red;
+}

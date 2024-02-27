@@ -1,0 +1,59 @@
+{
+  "name": "react-ts-components-library",
+  "version": "1.0.0",
+  "description": "react typescript components library with storybook bundled by rollup",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "rollup": "rollup -c --bundleConfigAsCjs",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anuj-shrestha/react-ts-components-library.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anuj-shrestha/react-ts-components-library/issues"
+  },
+  "homepage": "https://github.com/anuj-shrestha/react-ts-components-library#readme",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@storybook/addon-essentials": "^7.6.17",
+    "@storybook/addon-interactions": "^7.6.17",
+    "@storybook/addon-links": "^7.6.17",
+    "@storybook/addon-onboarding": "^1.0.11",
+    "@storybook/blocks": "^7.6.17",
+    "@storybook/jest": "^0.2.3",
+    "@storybook/react": "^7.6.17",
+    "@storybook/react-vite": "^7.6.17",
+    "@storybook/test": "^7.6.17",
+    "@storybook/testing-library": "^0.2.2",
+    "@testing-library/react": "^14.2.1",
+    "@types/lodash.debounce": "^4.0.9",
+    "@types/react": "^18.2.58",
+    "classnames": "^2.5.1",
+    "lodash.debounce": "^4.0.8",
+    "node-sass": "^9.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rollup": "^4.12.0",
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "sass": "^1.71.1",
+    "storybook": "^7.6.17",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3"
+  }
+}
