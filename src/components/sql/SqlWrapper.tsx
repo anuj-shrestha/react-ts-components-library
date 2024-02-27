@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from "react";
-import "./styles.css";
-import initSqlJs from "sql.js";
-
-// Required to let webpack 4 know it needs to copy the wasm file to our assets
-import sqlWasm from "!!file-loader?name=sql-wasm-[contenthash].wasm!sql.js/dist/sql-wasm.wasm";
+import initSqlJs, { Database, QueryExecResult } from "sql.js";
 
 export default function SqlWrapper() {
-  const [db, setDb] = useState(null);
-  const [error, setError] = useState(null);
+  const [db, setDb] = useState<Database | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  useEffect(async () => {
+  useEffect(() => {
     // sql.js needs to fetch its wasm file, so we cannot immediately instantiate the database
     // without any configuration, initSqlJs will fetch the wasm files directly from the same path as the js
     // see ../craco.config.js
-    try {
-      const SQL = await initSqlJs({ locateFile: () => sqlWasm });
-      setDb(new SQL.Database());
-    } catch (err) {
-      setError(err);
-    }
+    const connectToDb = async () => {
+      try {
+        const SQL = await initSqlJs({
+          locateFile: (filename) => `./node_modules/sql.js/dist/${filename}`,
+        });
+        setDb(new SQL.Database());
+      } catch (err) {
+        const error = err as Error;
+        setError(error.message);
+      }
+    };
+    connectToDb();
   }, []);
 
   if (error) return <pre>{error.toString()}</pre>;
@@ -26,15 +28,11 @@ export default function SqlWrapper() {
   else return <SQLRepl db={db} />;
 }
 
-/**
- * A simple SQL read-eval-print-loop
- * @param {{db: import("sql.js").Database}} props
- */
-function SQLRepl({ db }) {
-  const [error, setError] = useState(null);
-  const [results, setResults] = useState([]);
+function SQLRepl({ db }: { db: Database }) {
+  const [error, setError] = useState<string | null>(null);
+  const [results, setResults] = useState<QueryExecResult[]>([]);
 
-  function exec(sql) {
+  function exec(sql: string) {
     try {
       // The sql is executed synchronously on the UI thread.
       // You may want to use a web worker here instead
@@ -42,7 +40,7 @@ function SQLRepl({ db }) {
       setError(null);
     } catch (err) {
       // exec throws an error when the SQL statement is invalid
-      setError(err);
+      setError((err as Error).message);
       setResults([]);
     }
   }
@@ -70,11 +68,7 @@ function SQLRepl({ db }) {
   );
 }
 
-/**
- * Renders a single value of the array returned by db.exec(...) as a table
- * @param {import("sql.js").QueryExecResult} props
- */
-function ResultsTable({ columns, values }) {
+function ResultsTable({ columns, values }: QueryExecResult) {
   return (
     <table>
       <thead>

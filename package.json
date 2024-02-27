@@ -29,6 +29,7 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
+    "@rollup/plugin-wasm": "^6.2.2",
     "@storybook/addon-essentials": "^7.6.17",
     "@storybook/addon-interactions": "^7.6.17",
     "@storybook/addon-links": "^7.6.17",
@@ -42,6 +43,7 @@
     "@testing-library/react": "^14.2.1",
     "@types/lodash.debounce": "^4.0.9",
     "@types/react": "^18.2.58",
+    "@types/sql.js": "^1.4.9",
     "classnames": "^2.5.1",
     "lodash.debounce": "^4.0.8",
     "node-sass": "^9.0.0",
@@ -52,8 +54,12 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "sass": "^1.71.1",
+    "sql.js": "^1.10.2",
     "storybook": "^7.6.17",
     "tslib": "^2.6.2",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "rollup-plugin-copy": "^3.5.0"
   }
 }
