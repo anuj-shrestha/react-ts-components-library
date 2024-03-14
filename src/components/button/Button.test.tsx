@@ -11,7 +11,7 @@ describe("Button", () => {
   it("renders the correct text", () => {
     const buttonText = "Click me";
     const { getByText } = render(<Button>{buttonText}</Button>);
-    expect(getByText("buttonText")).toBeInTheDocument();
+    expect(getByText(buttonText)).toBeInTheDocument();
   });
 
   it("calls the onClick handler when clicked", () => {
