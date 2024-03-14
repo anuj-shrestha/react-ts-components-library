@@ -9,7 +9,7 @@
     "dist"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "rollup": "rollup -c --bundleConfigAsCjs",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
@@ -25,6 +25,9 @@
   },
   "homepage": "https://github.com/anuj-shrestha/react-ts-components-library#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.24.0",
+    "@babel/preset-react": "^7.23.3",
+    "@babel/preset-typescript": "^7.23.3",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
@@ -41,10 +44,14 @@
     "@storybook/test": "^7.6.17",
     "@storybook/testing-library": "^0.2.2",
     "@testing-library/react": "^14.2.1",
+    "@types/jest": "^29.5.12",
     "@types/lodash.debounce": "^4.0.9",
     "@types/react": "^18.2.58",
     "@types/sql.js": "^1.4.9",
     "classnames": "^2.5.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "lodash.debounce": "^4.0.8",
     "node-sass": "^9.0.0",
     "react": "^18.2.0",
